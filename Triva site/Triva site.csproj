@@ -69,6 +69,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HtmlPage1.html" />
     <Content Include="question.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

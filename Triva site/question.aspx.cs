@@ -15,6 +15,10 @@ namespace WebApplication5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["UserName"] = "fsdfsd";
+        }
+
+        Allquestions getquestion() {
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             StringBuilder sb = new StringBuilder();
             byte[] buf = new byte[8192];
@@ -37,13 +41,11 @@ namespace WebApplication5
             JavaScriptSerializer ser = new JavaScriptSerializer();
 
             Allquestions response = ser.Deserialize<Allquestions>(tempString);
-            
-            foreach (var item in response.results)
-            {
-                Response.Write("type: " + item.type + " & " + "category: " + item.category + " & " + "incorrect_answers: " + item.incorrect_answers[0] + " & " + "difficulty: " + item.difficulty + " & " + "question: " + item.question + " & " + "correct_answer: " + item.correct_answer + "<br/>");
-            }
+            return response;
         }
     }
+
+    
 
     public class singlequestion
     {
