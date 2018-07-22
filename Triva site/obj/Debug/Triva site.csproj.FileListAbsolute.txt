@@ -1,13 +1,6 @@
 C:\Users\jake\source\repos\Triva site\Triva site\bin\Triva site.dll.config
 C:\Users\jake\source\repos\Triva site\Triva site\bin\Triva site.dll
 C:\Users\jake\source\repos\Triva site\Triva site\bin\Triva site.pdb
-C:\Users\jake\source\repos\Triva site\Triva site\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\jake\source\repos\Triva site\Triva site\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\jake\source\repos\Triva site\Triva site\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\jake\source\repos\Triva site\Triva site\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\jake\source\repos\Triva site\Triva site\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\jake\source\repos\Triva site\Triva site\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\jake\source\repos\Triva site\Triva site\bin\roslyn\VBCSCompiler.exe
 C:\Users\jake\source\repos\Triva site\Triva site\obj\Debug\Triva site.csprojResolveAssemblyReference.cache
 C:\Users\jake\source\repos\Triva site\Triva site\obj\Debug\Triva site.csproj.CoreCompileInputs.cache
 C:\Users\jake\source\repos\Triva site\Triva site\obj\Debug\Triva site.dll
