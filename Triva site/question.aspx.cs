@@ -15,7 +15,10 @@ namespace WebApplication5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["UserName"] = "fsdfsd";
+            Allquestions quest = getquestion();
+            category.Value = quest.results[0].category;
+            questions.Value = quest.results[0].question;
+            choices.Value = quest.results[0].correct_answer;
         }
 
         Allquestions getquestion() {
