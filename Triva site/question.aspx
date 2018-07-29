@@ -4,14 +4,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="wickedpicker.css" />
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script type="text/javascript" src="wickedpicker.js"></script>
       <script>
           $(document).ready(function () {
-                $("#cate").animate({ fontSize: '7em' });
-                $("#cate").animate({ fontSize: '2em' });
-                $("#cate").animate({ fontSize: '7em' });
-                $("#cate").text($("#category").val());
-        });
+              $("#quest").text($("#questions").val());
+              $("#cate").text($("#category").val());
+              var answeres = $("#choices").val().split(",");
+              answeres.forEach(function (element) {
+                  var radioBtn = $('<input type="radio" name="rbtnCount" />' + element + "<br>");
+              radioBtn.appendTo('#answer');
+                });
+              
+              
+          });
+         
+   
+   
+
 
     </script>
     <style>
@@ -26,7 +37,12 @@
         }
         #quest 
         {
-            opacity:0;
+           margin: auto;
+        width:100%;
+        text-align:center;
+        padding: 10px;
+        white-space:nowrap;
+        text-wrap:none;
         }
      </style>
     <title></title>
@@ -42,6 +58,8 @@
         <asp:HiddenField ID="category" runat="server" />
         <asp:HiddenField ID="questions" runat="server" />
         <asp:HiddenField ID="choices" runat="server" />
+       
+   
        
    
 

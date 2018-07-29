@@ -18,7 +18,7 @@ namespace WebApplication5
             Allquestions quest = getquestion();
             category.Value = quest.results[0].category;
             questions.Value = quest.results[0].question;
-            choices.Value = quest.results[0].correct_answer;
+            choices.Value = quest.results[0].correct_answer +convertList(quest.results[0].incorrect_answers);
         }
 
         Allquestions getquestion() {
@@ -45,6 +45,16 @@ namespace WebApplication5
 
             Allquestions response = ser.Deserialize<Allquestions>(tempString);
             return response;
+        }
+
+        private string convertList(List<String> incorrect)
+        {
+            string incore = "";
+            foreach (string a in incorrect)
+            {
+                incore += "," +a;
+            }
+            return incore;
         }
     }
 
