@@ -5,3 +5,10 @@ C:\Users\jake\source\repos\Triva site\Triva site\obj\Debug\Triva site.csprojReso
 C:\Users\jake\source\repos\Triva site\Triva site\obj\Debug\Triva site.csproj.CoreCompileInputs.cache
 C:\Users\jake\source\repos\Triva site\Triva site\obj\Debug\Triva site.dll
 C:\Users\jake\source\repos\Triva site\Triva site\obj\Debug\Triva site.pdb
+D:\triva-site\Triva site\bin\Triva site.dll.config
+D:\triva-site\Triva site\bin\Triva site.dll
+D:\triva-site\Triva site\bin\Triva site.pdb
+D:\triva-site\Triva site\obj\Debug\Triva site.csprojAssemblyReference.cache
+D:\triva-site\Triva site\obj\Debug\Triva site.csproj.CoreCompileInputs.cache
+D:\triva-site\Triva site\obj\Debug\Triva site.dll
+D:\triva-site\Triva site\obj\Debug\Triva site.pdb

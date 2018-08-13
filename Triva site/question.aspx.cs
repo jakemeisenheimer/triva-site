@@ -15,13 +15,33 @@ namespace WebApplication5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Allquestions quest = getquestion();
-            category.Value = quest.results[0].category;
-            questions.Value = quest.results[0].question;
-            choices.Value = quest.results[0].correct_answer +convertList(quest.results[0].incorrect_answers);
+            RadioButtonList q = RadioButtonList1;
+            if (Session["questionNumber"] == null)
+            {
+                Session["questionNumber"] = 1;
+            }
+
+            if (Session["question"] == null)
+            { 
+                Session["question"] = getquestion();
+            }
+
+            if (Session["questionlist"] == null)
+            {
+                makeQestion();
+            }
+            else
+            {
+                q = (RadioButtonList)Session["questionlist"];
+            }
+            Response.Write(Session["questionNumber"]);
+           
+          
+
         }
 
-        Allquestions getquestion() {
+        Allquestions getquestion()
+        {
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             StringBuilder sb = new StringBuilder();
             byte[] buf = new byte[8192];
@@ -47,18 +67,54 @@ namespace WebApplication5
             return response;
         }
 
-        private string convertList(List<String> incorrect)
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            string incore = "";
-            foreach (string a in incorrect)
+ 
+            Session["questionNumber"] = (int)Session["questionNumber"] + 1;
+
+            makeQestion();
+           
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            
+            if (RadioButtonList1.SelectedItem.ToString().CompareTo(((Allquestions)Session["question"]).results[(int)Session["questionNumber"]].correct_answer) == 0)
             {
-                incore += "," +a;
+                Response.Write("Correct");
             }
-            return incore;
+            else
+            {
+                Response.Write("incorrect");
+            }
+            Response.Write(RadioButtonList1.SelectedItem.ToString());
+            Session["questionlist"] = RadioButtonList1;
+        }
+
+        private void makeQestion()
+        {
+            int questionNumber = (int)Session["questionNumber"];
+            ((Allquestions)Session["question"]).results[questionNumber].incorrect_answers.Add(((Allquestions)Session["question"]).results[questionNumber].correct_answer);
+            RadioButtonList1.Items.Clear();
+            Allquestions quest = (Allquestions)Session["question"];
+            category.Value = HttpUtility.HtmlDecode(quest.results[questionNumber].category);
+            questions.Value = HttpUtility.HtmlDecode(quest.results[questionNumber].question);
+
+
+            int i = 1;
+            foreach (string s in quest.results[questionNumber].incorrect_answers)
+            {
+                RadioButtonList1.Items.Add(new ListItem(s, i.ToString()));
+                i++;
+            }
+            Session["questionlist"] = RadioButtonList1;
         }
     }
 
     
+
+
+
 
     public class singlequestion
     {
