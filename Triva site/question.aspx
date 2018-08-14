@@ -11,12 +11,13 @@
           $(document).ready(function () {
               $("#quest").text($("#questions").val());
               $("#cate").text($("#category").val());  
+             
           });
-
     </script>
     <style>
         #cate 
         {
+        font-size: 34px;
         margin: auto;
         width:100%;
         text-align:center;
@@ -26,6 +27,7 @@
         }
         #quest 
         {
+        font-size: 20px;
         margin: auto;    
         width:100%;
         text-align:center;
@@ -52,28 +54,58 @@
         }
         #Button1
         {
+            visibility:hidden;
             position:absolute;
             bottom: 5%;
             right:5%;
         }
+         #Button2
+        {
+            
+            position:absolute;
+            bottom: 5%;
+            right:35%;
+            width:30%;
+            height:10%;
+        }
         #aws
         {
-            position:relative;
+            position:inherit;
             height:50%;
             width:50%;
+            margin-top: 5%;
             margin-left:25%;
             border: solid 5px black;
             border-radius:3px;
             background-color:white;
         }
+        #correct
+        {
+        font-size:100px;
+        text-align:center;
+        width: 100%;
+        z-index:1;
+        position:absolute;
+        white-space:nowrap;
+        text-wrap:none;
+        
+        }
+        
+        
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
      </style>
     <title></title>
 </head>
 <body>
      
     <form id="form1" runat="server">
+        <asp:Panel ID="questionBox" runat="server">
+       <div id="correct"> 
+           
+          
+           <asp:Label ID="Label1" runat="server" Text=""></asp:Label></div>
         <div id="page">
-       <div id="cate"></div>
+        <div id="cate"></div>
         <div id="quest"></div>
         <div id="answer"></div>
        
@@ -82,28 +114,14 @@
         <asp:HiddenField ID="questions" runat="server" />
         <asp:HiddenField ID="choices" runat="server" />
        
-   
-       
-   
 
-    
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
-       
-   
-       
-   
-
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" Enabled="False" />
     
     <div id="aws">
-        <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+        <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
         </asp:RadioButtonList>
-
-    </div>
-        
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
-       
-    </div>
-       
+         </asp:Panel>
+     
    
 
     

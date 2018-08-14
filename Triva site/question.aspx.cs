@@ -18,11 +18,12 @@ namespace WebApplication5
             RadioButtonList q = RadioButtonList1;
             if (Session["questionNumber"] == null)
             {
-                Session["questionNumber"] = 1;
+                Session["questionNumber"] = 0;
             }
 
             if (Session["question"] == null)
-            { 
+            {
+                Session["correct"] = 0;
                 Session["question"] = getquestion();
             }
 
@@ -34,7 +35,7 @@ namespace WebApplication5
             {
                 q = (RadioButtonList)Session["questionlist"];
             }
-            Response.Write(Session["questionNumber"]);
+           
            
           
 
@@ -67,28 +68,42 @@ namespace WebApplication5
             return response;
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
- 
-            Session["questionNumber"] = (int)Session["questionNumber"] + 1;
-
-            makeQestion();
-           
-        }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            
-            if (RadioButtonList1.SelectedItem.ToString().CompareTo(((Allquestions)Session["question"]).results[(int)Session["questionNumber"]].correct_answer) == 0)
+            if ((int)Session["questionNumber"] < ((Allquestions)Session["question"]).results.Count-1)
             {
-                Response.Write("Correct");
+                if (RadioButtonList1.Enabled == true)
+                {
+                    Button2.Text = "next question";
+                    RadioButtonList1.Enabled = false;
+                    if (RadioButtonList1.SelectedItem.ToString().CompareTo(((Allquestions)Session["question"]).results[(int)Session["questionNumber"]].correct_answer) == 0)
+                    {
+                        Session["correct"] = (int)Session["correct"] + 1;
+                        Label1.Text = "Correct";
+                        Label1.ForeColor = System.Drawing.Color.Green;
+                    }
+                    else
+                    {
+                        Label1.Text = "InCorrect";
+                        Label1.ForeColor = System.Drawing.Color.Red;
+                    }
+                    Session["questionlist"] = RadioButtonList1;
+                }
+                else
+                {
+                    Label1.Text = "";
+                    Button2.Text = "Submit";
+                    RadioButtonList1.Enabled = true; ;
+                    Session["questionNumber"] = (int)Session["questionNumber"] + 1;
+                    makeQestion();
+                    Button2.Enabled = false;
+                }
             }
             else
             {
-                Response.Write("incorrect");
+                Response.Redirect("results.aspx");
             }
-            Response.Write(RadioButtonList1.SelectedItem.ToString());
-            Session["questionlist"] = RadioButtonList1;
         }
 
         private void makeQestion()
@@ -100,7 +115,7 @@ namespace WebApplication5
             category.Value = HttpUtility.HtmlDecode(quest.results[questionNumber].category);
             questions.Value = HttpUtility.HtmlDecode(quest.results[questionNumber].question);
 
-
+            quest.results[questionNumber].incorrect_answers = Shuffle<String>(quest.results[questionNumber].incorrect_answers);
             int i = 1;
             foreach (string s in quest.results[questionNumber].incorrect_answers)
             {
@@ -109,11 +124,28 @@ namespace WebApplication5
             }
             Session["questionlist"] = RadioButtonList1;
         }
+
+        private static Random rng = new Random();
+        // randomizes list elements
+        public static List<T> Shuffle<T>(List<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+            return list;
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Button2.Enabled = true;
+        }
     }
-
-    
-
-
 
 
     public class singlequestion
