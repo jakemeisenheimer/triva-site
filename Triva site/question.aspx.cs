@@ -120,6 +120,7 @@ namespace WebApplication5
             foreach (string s in quest.results[questionNumber].incorrect_answers)
             {
                 RadioButtonList1.Items.Add(new ListItem(s, i.ToString()));
+                RadioButtonList1.Items[i-1].Text += "<span class=\"checkmark\"></span>";
                 i++;
             }
             Session["questionlist"] = RadioButtonList1;

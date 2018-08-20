@@ -11,11 +11,13 @@
           $(document).ready(function () {
               $("#quest").text($("#questions").val());
               $("#cate").text($("#category").val());  
-             
+             $("td").click(function(){
+                    
+    });
           });
     </script>
     <style>
-        #cate 
+         #cate 
         {
         font-size: 34px;
         margin: auto;
@@ -39,25 +41,17 @@
             border: solid 10px black;
             border-radius:5px;
             position:relative;
-            width:50vw;
-            height:50vh;
+            width:700px;
+            height:500px;
             background-color:#aaaaaa;
-            margin-left:25vw;
-            margin-top:15vh;
+            margin: auto;
+            margin-top: 5%;
         }
         #RadioButtonList1
         {
             position:relative;
             width:100%;
-            height:50%;
-            padding-top:10%;
-        }
-        #Button1
-        {
-            visibility:hidden;
-            position:absolute;
-            bottom: 5%;
-            right:5%;
+            height:100%;
         }
          #Button2
         {
@@ -70,26 +64,92 @@
         }
         #aws
         {
-            position:inherit;
-            height:50%;
-            width:50%;
-            margin-top: 5%;
-            margin-left:25%;
+            position:relative;
+            height: 50%;
+            width:80%;
+            margin: auto;
             border: solid 5px black;
             border-radius:3px;
             background-color:white;
+            margin-top: 5%;
         }
         #correct
         {
         font-size:100px;
         text-align:center;
         width: 100%;
+            
         z-index:1;
         position:absolute;
         white-space:nowrap;
         text-wrap:none;
         
         }
+        
+
+        #RadioButtonList1 td {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+#RadioButtonList1 td input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    
+}
+
+/* On mouse-over, add a grey background color */
+#RadioButtonList1 td:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+ td input:checked ~ label .checkmark {
+    background-color: darkgreen;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    
+}
+
+/* Show the indicator (dot/circle) when checked */
+#RadioButtonList1 td input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+#RadioButtonList1 td .checkmark:after {
+ 	top: 5px;
+	left: 5px;
+	width: 15px;
+	height: 15px;
+	border-radius: 100%;
+	background: gray;
+}
         
         
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

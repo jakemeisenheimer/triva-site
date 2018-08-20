@@ -12,3 +12,10 @@ D:\triva-site\Triva site\obj\Debug\Triva site.csprojAssemblyReference.cache
 D:\triva-site\Triva site\obj\Debug\Triva site.csproj.CoreCompileInputs.cache
 D:\triva-site\Triva site\obj\Debug\Triva site.dll
 D:\triva-site\Triva site\obj\Debug\Triva site.pdb
+C:\Users\jake\source\repos\triva-site\Triva site\bin\Triva site.dll.config
+C:\Users\jake\source\repos\triva-site\Triva site\bin\Triva site.dll
+C:\Users\jake\source\repos\triva-site\Triva site\bin\Triva site.pdb
+C:\Users\jake\source\repos\triva-site\Triva site\obj\Debug\Triva site.csprojResolveAssemblyReference.cache
+C:\Users\jake\source\repos\triva-site\Triva site\obj\Debug\Triva site.csproj.CoreCompileInputs.cache
+C:\Users\jake\source\repos\triva-site\Triva site\obj\Debug\Triva site.dll
+C:\Users\jake\source\repos\triva-site\Triva site\obj\Debug\Triva site.pdb

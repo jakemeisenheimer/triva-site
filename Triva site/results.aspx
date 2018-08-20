@@ -24,6 +24,8 @@
                 </asp:ChartArea>
             </chartareas>
         </asp:Chart>
+        <asp:Table ID="Table1" runat="server">
+        </asp:Table>
     </form>
 </body>
 </html>
